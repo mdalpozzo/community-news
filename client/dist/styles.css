@@ -99,7 +99,7 @@ input[type=text] {
 }
 
 .story-entry:hover {
-  background-color: antiquewhite;
+  background-color: #fcf4e9;
 }
 
 .story-entry img {
@@ -138,7 +138,7 @@ input[type=text] {
 }
 
 .new-story:hover {
-  background-color: antiquewhite;
+  background-color: #fcf4e9;
   cursor: pointer;
 }
 
@@ -155,6 +155,48 @@ input[type=text] {
 }
 
 .toolbar-button:hover {
-  background-color: antiquewhite;
+  background-color: #fcf4e9;
   cursor: pointer;
+}
+
+.ratings {
+  display: flex;
+}
+
+.nominations {
+  display: flex;
+  width: 60px;
+  margin: 5px 0 5px 0;
+}
+
+.nominations:hover {
+  cursor: pointer;
+}
+
+.nominations span {
+}
+
+.nominations img {
+  height: 25px;
+  width: 25px;
+  margin-right: 0;
+}
+
+.upvotes {
+  display: flex;
+  width: 60px;
+  margin: 5px 0 5px 0;
+}
+
+.upvotes:hover {
+  cursor: pointer;
+}
+
+.upvotes span {
+}
+
+.upvotes img {
+  height: 25px;
+  width: 25px;
+  margin-right: 0;
 }

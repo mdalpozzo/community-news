@@ -8,8 +8,16 @@ function StoryEntry(props) {
         <span className="story-title">{props.story.title}</span>
         <span className="story-author">by {props.story.author}</span>
         <span className="story-intro">{props.story.text}</span>
-        <span className="upvotes">upvotes: {props.story.upvotes}</span>
-        <span className="nominations">nominations: {props.story.nominations}</span>
+        <div className="ratings">
+          <div className="upvotes" onClick={props.upvoteHandler}>
+            <img src="rock-on.png" alt="upvotes" />
+            <span>{props.story.upvotes}</span>
+          </div>
+          <div className="nominations" onClick={props.nominationHandler}>
+            <img src="nominate.png" alt="nominations" />
+            <span>{props.story.nominations}</span>
+          </div>
+        </div>
       </div>
     </div>
   );

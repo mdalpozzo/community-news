@@ -9,10 +9,10 @@ const dbHost = process.env.DATABASE_HOST || 'localhost';
 const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
 
-app.use('/home/:zipcode', express.static(path.join(__dirname, '../client/dist')));
+app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/', (req, res) => {
-  res.status(302).redirect(`/home/${userZipcode}`);
+  res.status(302).redirect(`/scope/hood/${userZipcode}`);
 });
 
 

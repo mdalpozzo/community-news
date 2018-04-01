@@ -85,6 +85,26 @@ class App extends React.Component {
     });
   }
 
+  upvoteHandler(e) {
+    if (e.target.alt === 'upvotes') {
+      e.target.nextSibling.innerHTML = Number(e.target.nextSibling.innerHTML) + 1;
+    } else if (isNaN(e.target.innerHTML) === false) {
+      e.target.innerHTML = Number(e.target.innerHTML) + 1;
+    } else {
+      e.target.getElementByTagName('span').innerHTML = Number(e.target.getElementByTagName('span').innerHTML) + 1;
+    }
+  }
+
+  nominationHandler(e) {
+    if (e.target.alt === 'nominations') {
+      e.target.nextSibling.innerHTML = Number(e.target.nextSibling.innerHTML) + 1;
+    } else if (isNaN(e.target.innerHTML) === false) {
+      e.target.innerHTML = Number(e.target.innerHTML) + 1;
+    } else {
+      e.target.getElementByTagName('span').innerHTML = Number(e.target.getElementByTagName('span').innerHTML) + 1;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -92,8 +112,18 @@ class App extends React.Component {
           <NavBar />
         </div>
         <div id="main-body">
-          <ToolBar stateClickHandler={this.stateClickHandler.bind(this)} cityClickHandler={this.cityClickHandler.bind(this)} countyClickHandler={this.countyClickHandler.bind(this)} hoodClickHandler={this.hoodClickHandler.bind(this)} />
-          <Stories stories={this.state.currentPageStories} mainFeedTitle={this.state.mainFeedTitle} />
+          <ToolBar
+            stateClickHandler={this.stateClickHandler.bind(this)}
+            cityClickHandler={this.cityClickHandler.bind(this)}
+            countyClickHandler={this.countyClickHandler.bind(this)}
+            hoodClickHandler={this.hoodClickHandler.bind(this)}
+          />
+          <Stories
+            stories={this.state.currentPageStories}
+            mainFeedTitle={this.state.mainFeedTitle}
+            upvoteHandler={this.upvoteHandler.bind(this)}
+            nominationHandler={this.nominationHandler.bind(this)}
+          />
           <div id="placeholder">Top Stories in Bay Area</div>
         </div>
       </div>
