@@ -10,7 +10,7 @@ async function seedDB(dbcount, collection, client) {
 
   const tags = ['shoutOut', 'complaint', 'callToAction'];
   const cities = ['San Francisco', 'Daly City', 'Milbrae', 'Oakland', 'San Rafael', 'Richmond', 'Walnut Creek', 'Santa Rosa', 'Palo Alto', 'Union City', 'Redwood City', 'Santa Clara'];
-  const counties = ['San Francisco', 'Marin', 'Oakland'];
+  const counties = ['San Francisco', 'Marin', 'Oakland', 'Bay Area'];
 
   for (let x = 0; x < cycles; x++) {
     const bulkEntries = [];

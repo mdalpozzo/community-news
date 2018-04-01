@@ -7,7 +7,7 @@ const app = express();
 
 const dbHost = process.env.DATABASE_HOST || 'localhost';
 const port = process.env.PORT || 8000;
-const userZipcode = process.env.ZIPCODE || 94115;
+const userZipcode = process.env.ZIPCODE || 94121;
 
 app.use('/home/:zipcode', express.static(path.join(__dirname, '../client/dist')));
 
@@ -26,7 +26,25 @@ MongoClient.connect(`mongodb://${dbHost}/`, (err, client) => {
     app.get('/zipcode', async (req, res) => {
       let { zipcode } = req.query;
       zipcode = Number(zipcode);
-      const data = await collection.find({ zipcode }).toArray();
+      const data = await collection.find({ zipcode }).sort({ upvotes: -1 }).toArray();
+      res.send(data);
+    });
+    
+    app.get('/county', async (req, res) => {
+      let { county } = req.query;
+      const data = await collection.find({ county }).sort({ upvotes: -1 }).toArray();
+      res.send(data);
+    });
+
+    app.get('/city', async (req, res) => {
+      let { city } = req.query;
+      const data = await collection.find({ city }).sort({ upvotes: -1 }).toArray();
+      res.send(data);
+    });
+
+    app.get('/state', async (req, res) => {
+      let { state } = req.query;
+      const data = await collection.find({ state }).sort({ upvotes: -1 }).toArray();
       res.send(data);
     });
   }
