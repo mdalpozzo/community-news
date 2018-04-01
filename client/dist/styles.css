@@ -1,4 +1,5 @@
 #nav-bar {
+  height: 75px;
   display: flex;
   width: 100%;
 }
@@ -28,9 +29,10 @@
 }
 
 .search {
+  display: flex;
   border-right: 1px solid grey;
   border-left: 1px solid grey;
-  float:left;
+  align-items: center;
 }
 
 .search form {
@@ -39,7 +41,7 @@
 
 input[type=text] {
   height: 100%;
-  padding: 25px 25px 0px 10px;
+  padding: 0 10px 0 10px;
   font-size: 14px;
   border: none;
   letter-spacing: 0.3px;
@@ -50,12 +52,47 @@ input[type=text] {
 }
 
 .search button {
-  float: left;
-  padding: 25px 20px 15px 20px;
   margin-right: 5px;
   background: white;
   font-size: 16px;
   border: none;
   color: grey;
-  width: 100px;
+  width: 50px;
+  height: 50px;
+}
+
+#main-body {
+  display: flex;
+}
+
+#stories {
+}
+
+.story-entry {
+  display: flex;
+  height: 300px;
+  padding: 25px 0 25px 25px;
+}
+
+.story-entry img {
+  margin-right: 25px;
+}
+
+.story-overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.story-author {
+  color: #777777;
+}
+.story-intro {
+  height: 150px;
+  overflow: hidden;
+  margin-top: 20px;
 }

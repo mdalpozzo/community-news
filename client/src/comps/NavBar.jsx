@@ -3,11 +3,11 @@ import React from 'react';
 function NavBar() {
   return (
     <div id="nav-bar">
-      <div id="logo">LOGO</div>
+      <img src="community-news-logo.png" alt="community-news-logo" />
       <div className="search">
         <form>
+          <button type="submit" style={{ backgroundImage: 'url(http://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey-md.png)', backgroundSize: 'cover' }} />
           <input type="text" placeholder="search for inspiring community stories" name="search" />
-          <button type="submit">Search</button>
         </form>
       </div>
       <div id="title">Community News</div>

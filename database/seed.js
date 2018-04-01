@@ -18,6 +18,7 @@ async function seedDB(dbcount, collection, client) {
       const story = {
         id: i + dbcount,
         photo_url: `https://picsum.photos/640/480/?image=${Math.floor(Math.random() * 1000)}`,
+        author: faker.name.findName(),
         title: faker.lorem.words(Math.ceil(Math.random() * 5)),
         text: faker.lorem.paragraphs(Math.ceil(Math.random() * 5)),
         zipcode: Math.round(Math.random() * 50) + 94108,

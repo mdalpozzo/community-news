@@ -1,10 +1,10 @@
 import React from 'react';
 import StoryEntry from './StoryEntry.jsx'
 
-function Stories() {
-  return(
+function Stories(props) {
+  return (
     <div id="stories">
-      {props.stories.map(story => <StoryEntry story={story} />)}
+      {props.stories.map((story, i) => <StoryEntry story={story} key={i} />)}
     </div>
   );
 }
