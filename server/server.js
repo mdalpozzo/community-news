@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const { MongoClient } = require('mongodb');
 const DB = require('../database/mongo.js');
+const bodyParser = require('body-parser');
+
 
 const app = express();
 
@@ -9,6 +11,7 @@ const dbHost = process.env.DATABASE_HOST || 'localhost';
 const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
 
+app.use(bodyParser.json());
 app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/', (req, res) => {
@@ -16,7 +19,7 @@ app.get('/', (req, res) => {
 });
 
 
-MongoClient.connect(`mongodb://${dbHost}/`, (err, client) => {
+MongoClient.connect(`mongodb://${dbHost}/`, { useNewUrlParser: true }, (err, client) => {
   if (err) {
     throw err;
   } else {
@@ -24,9 +27,9 @@ MongoClient.connect(`mongodb://${dbHost}/`, (err, client) => {
     const collection = db.collection('articles');
     
     app.get('/zipcode', async (req, res) => {
-      let { zipcode } = req.query;
-      zipcode = Number(zipcode);
-      const data = await collection.find({ zipcode }).sort({ upvotes: -1 }).toArray();
+      let { ID } = req.query;
+      ID = Number(ID);
+      const data = await collection.find({ zipcode: ID }).sort({ upvotes: -1 }).toArray();
       res.send(data);
     });
     
@@ -46,6 +49,20 @@ MongoClient.connect(`mongodb://${dbHost}/`, (err, client) => {
       let { state } = req.query;
       const data = await collection.find({ state }).sort({ upvotes: -1 }).toArray();
       res.send(data);
+    });
+
+    app.post('/upVote', async (req, res) => {
+      const { voteCount, ID } = req.body.data;
+      // console.log('votecount:', voteCount, 'ID:', ID);
+      await DB.updateVote(ID, collection, voteCount);
+      res.end();
+    });
+
+    app.post('/upNom', async (req, res) => {
+      const { nomCount, ID } = req.body.data;
+      console.log('votecount:', nomCount, 'ID:', ID);
+      await DB.updateNomination(ID, collection, nomCount);
+      res.end();
     });
   }
 });
