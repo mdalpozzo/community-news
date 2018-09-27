@@ -13,14 +13,19 @@
   "dependencies": {
     "@types/react-redux": "^6.0.9",
     "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
+    "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.0.5",
+    "nodemon": "^1.18.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "qs": "^6.5.2",
@@ -29,7 +34,8 @@
     "react-dom": "^16.3.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^10.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -45,6 +51,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "style-loader": "^0.20.3",
     "webpack": "^4.4.1",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^3.1.1"
   }
 }
