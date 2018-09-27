@@ -20,7 +20,7 @@ class Stories extends React.Component {
     return (
       <div id="stories">
         <h1>{this.props.geoScope} News</h1>
-        {this.props.filterBy.topStories.items.map(story => <StoryEntry story={story} key={story._id} nominationHandler={this.props} />)}
+        {this.props.filterBy.topStories.items.map(story => <StoryEntry story={story} key={story._id} />)}
       </div>
     );
   }
@@ -28,8 +28,6 @@ class Stories extends React.Component {
 
 Stories.propTypes = {
   fetchStories: PropTypes.func.isRequired,
-  updateVote: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
   didInvalidate: PropTypes.bool.isRequired,
   filterBy: PropTypes.shape({
     topStories: PropTypes.shape({
@@ -54,11 +52,11 @@ Stories.propTypes = {
 
 const mapStateToProps = state => (state.stories);
 
-const mapActionsToProps = (dispatch) => {
-  bindActionCreators({
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
     fetchStories,
     updateVote,
   }, dispatch);
 };
 
-export default connect(mapStateToProps, { fetchStories, updateVote })(Stories);
+export default connect(mapStateToProps, mapDispatchToProps)(Stories);

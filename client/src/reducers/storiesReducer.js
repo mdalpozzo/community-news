@@ -1,6 +1,3 @@
-// import { CLICK_ZIP } from '../actions/clickAction.js';
-// import { initialState } from './index';
-// import { initialState } from '../store/store';
 import { merge } from 'lodash';
 import * as types from '../actions/actionTypes';
 
@@ -36,6 +33,10 @@ export default function storiesReducer(state = initialState, action) {
             items: action.payload.data.slice(0, 9),
           },
         },
+      });
+    case types.FETCH_STORIES_FAILURE:
+      return merge({}, state, {
+        isFetching: false,
       });
     case types.UPVOTE_UPDATE_SUCCESS:
       return merge({}, state, {

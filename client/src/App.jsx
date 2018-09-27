@@ -16,16 +16,6 @@ class App extends React.Component {
   componentWillMount() {
   }
 
-  nominationHandler(e) {
-    if (e.target.alt === 'nominations') {
-      e.target.nextSibling.innerHTML = Number(e.target.nextSibling.innerHTML) + 1;
-    } else if (isNaN(e.target.innerHTML) === false) {
-      e.target.innerHTML = Number(e.target.innerHTML) + 1;
-    } else {
-      e.target.getElementByTagName('span').innerHTML = Number(e.target.getElementByTagName('span').innerHTML) + 1;
-    }
-  }
-
   render() {
     return (
       <div>
@@ -33,9 +23,7 @@ class App extends React.Component {
           <NavBar />
         </div>
         <div id="main-body">
-          <ToolBar
-            hoodClickHandler={this.props.fetchStories}
-          />
+          <ToolBar />
           <Stories />
           <div id="placeholder">Top Stories in Bay Area</div>
         </div>
@@ -46,14 +34,13 @@ class App extends React.Component {
 
 const mapStateToProps = state => (state.stories);
 
-const mapActionsToProps = (dispatch) => {
-  bindActionCreators({
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
     fetchStories: actions.fetchStories,
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(App);
-// connect(null, actions.fetchStories)(StoriesTop);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 ReactDOM.render(
   <Provider store={store}>

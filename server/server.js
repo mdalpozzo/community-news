@@ -27,6 +27,7 @@ MongoClient.connect(`mongodb://${dbHost}/`, { useNewUrlParser: true }, (err, cli
     const collection = db.collection('articles');
     
     app.get('/zipcode', async (req, res) => {
+      console.log('HERE');
       let { ID } = req.query;
       ID = Number(ID);
       const data = await collection.find({ zipcode: ID }).sort({ upvotes: -1 }).toArray();

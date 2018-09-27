@@ -33,7 +33,10 @@ export const fetchStories = (geotag = '94121') => (dispatch) => {
       type: types.FETCH_STORIES_SUCCESS,
       payload: stories,
       geoScope: geotag,
-    }));
+    }))
+    .catch((err) => {
+      console.log('ERROR:', err);
+    });
 };
 
 export const updateVote = (ID, voteCount) => (dispatch) => {
@@ -42,7 +45,10 @@ export const updateVote = (ID, voteCount) => (dispatch) => {
   axios.post(url('upVote'), { data }, data)
     .then(() => dispatch({
       type: types.UPVOTE_UPDATE_SUCCESS,
-    }));
+    }))
+    .catch((err) => {
+      console.log('ERROR:', err);
+    });
 };
 
 export const updateNomination = (ID, nomCount) => (dispatch) => {
@@ -51,15 +57,9 @@ export const updateNomination = (ID, nomCount) => (dispatch) => {
   axios.post(url('upNom'), { data }, data)
     .then(() => dispatch({
       type: types.UPVOTE_UPDATE_SUCCESS,
-    }));
+    }))
+    .catch((err) => {
+      console.log('ERROR:', err);
+    });
 };
 
-export const clickAction = (newsData) => {
-  // console.log('NEWSDATA:', newsData);
-  return {
-    type: 'CLICK',
-    payload: {
-      stories: newsData,
-    },
-  };
-};

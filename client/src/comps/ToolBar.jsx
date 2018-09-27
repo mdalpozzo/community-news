@@ -1,4 +1,6 @@
 import React from 'react';
+import SearchStories from './SearchStories.jsx';
+import FilterLocation from './FilterLocation.jsx';
 
 function ToolBar(props) {
   return (
@@ -6,21 +8,16 @@ function ToolBar(props) {
       <div className="new-story">
         <h1>Write an Article</h1>
         <span>
-          Everyone's voice needs to be heard to build a strong community
-          and every member has a duty to contribute their ideas!
+          {'Everyone\'s voice needs to be heard to build a strong community and every member has a duty to contribute their ideas!'}
         </span>
       </div>
-      <div className="toolbar-button" onClick={props.hoodClickHandler}>
-        <span>Your Hood</span>
+      <SearchStories />
+      <div className="toolbar-button">
+        <span>Search for Stories</span>
       </div>
-      <div className="toolbar-button" onClick={props.cityClickHandler}>
-        <span>Your City</span>
-      </div>
-      <div className="toolbar-button" onClick={props.countyClickHandler}>
-        <span>Your County</span>
-      </div>
-      <div className="toolbar-button" onClick={props.stateClickHandler}>
-        <span>Your State</span>
+      <FilterLocation />
+      <div className="toolbar-button">
+        <span>Filter by Location</span>
       </div>
     </div>
   );

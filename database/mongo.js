@@ -12,7 +12,6 @@ const findByZip = (zipcode, collection, callback) => {
 
 const updateVote = async (id, collection, voteCount) => {
   const newCount = Number(Number(voteCount) + 1);
-  console.log(newCount);
   // const filter = `_id: ObjectId('${id}')`;
   // const update = `$set: { upvotes: ${newCount} }`;
   await collection.updateOne({ _id: ObjectId(id) }, { $set: { upvotes: newCount } });
@@ -20,7 +19,6 @@ const updateVote = async (id, collection, voteCount) => {
 
 const updateNomination = async (id, collection, nomCount) => {
   const newCount = Number(Number(nomCount) + 1);
-  console.log(newCount);
   // const filter = `_id: ObjectId('${id}')`;
   // const update = `$set: { upvotes: ${newCount} }`;
   await collection.updateOne({ _id: ObjectId(id) }, { $set: { nominations: newCount } });
