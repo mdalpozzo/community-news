@@ -18,48 +18,74 @@ export const receiveStories = (stories) => {
 };
 
 export const fetchStories = (geotag = '94121') => (dispatch) => {
+  dispatch({
+    type: types.FETCH_STORIES_REQUEST,
+  });
+
   let endpoint = '';
 
   if (geotag.length === 5 && /^\d+$/.test(geotag)) {
-    endpoint = 'zipcode';
+    endpoint = 'api/stories/zipcode';
   }
 
-  axios.get(url(endpoint), {
-    params: {
-      ID: geotag,
-    },
-  })
-    .then(stories => dispatch({
-      type: types.FETCH_STORIES_SUCCESS,
-      payload: stories,
-      geoScope: geotag,
-    }))
+  axios
+    .get(url(endpoint), {
+      params: {
+        ID: geotag,
+      },
+    })
+    .then(stories =>
+      dispatch({
+        type: types.FETCH_STORIES_SUCCESS,
+        payload: stories,
+        geoScope: geotag,
+      }))
     .catch((err) => {
+      dispatch({
+        type: types.FETCH_STORIES_FAILURE,
+      });
+      console.log('ERROR:', err);
+    });
+};
+
+export const publishStory = storyData => (dispatch) => {
+  axios
+    .post(url('api/stories/publish'), storyData)
+    .then(() => {
+      dispatch({
+        type: types.PUBLISH_STORY_SUCCESS,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: types.PUBLISH_STORY_FAILURE,
+      });
       console.log('ERROR:', err);
     });
 };
 
 export const updateVote = (ID, voteCount) => (dispatch) => {
-  const indexInState = window.store.getState().stories.stories.findIndex(story => story._id === ID);
-  const data = { ID, voteCount, indexInState };
-  axios.post(url('upVote'), { data }, data)
-    .then(() => dispatch({
-      type: types.UPVOTE_UPDATE_SUCCESS,
-    }))
+  const data = { ID, voteCount };
+  axios
+    .post(url('api/stories/upVote'), { data }, data)
+    .then(() =>
+      dispatch({
+        type: types.UPVOTE_UPDATE_SUCCESS,
+      }))
     .catch((err) => {
       console.log('ERROR:', err);
     });
 };
 
 export const updateNomination = (ID, nomCount) => (dispatch) => {
-  const indexInState = window.store.getState().stories.stories.findIndex(story => story._id === ID);
-  const data = { ID, nomCount, indexInState };
-  axios.post(url('upNom'), { data }, data)
-    .then(() => dispatch({
-      type: types.UPVOTE_UPDATE_SUCCESS,
-    }))
+  const data = { ID, nomCount };
+  axios
+    .post(url('api/stories/upNom'), { data }, data)
+    .then(() =>
+      dispatch({
+        type: types.UPVOTE_UPDATE_SUCCESS,
+      }))
     .catch((err) => {
       console.log('ERROR:', err);
     });
 };
-

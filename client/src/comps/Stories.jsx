@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import StoryEntry from './StoryEntry.jsx'
+import StoryEntry from './StoryEntry.jsx';
 import { fetchStories, updateVote } from '../actions/actions';
 
 class Stories extends React.Component {
@@ -20,7 +20,9 @@ class Stories extends React.Component {
     return (
       <div id="stories">
         <h1>{this.props.geoScope} News</h1>
-        {this.props.filterBy.topStories.items.map(story => <StoryEntry story={story} key={story._id} />)}
+        {this.props.filterBy.topStories.items.map(story => (
+          <StoryEntry story={story} key={story._id} />
+        ))}
       </div>
     );
   }
@@ -50,13 +52,18 @@ Stories.propTypes = {
   geoScope: PropTypes.string,
 };
 
-const mapStateToProps = state => (state.stories);
+const mapStateToProps = state => state.stories;
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    fetchStories,
-    updateVote,
-  }, dispatch);
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchStories,
+      updateVote,
+    },
+    dispatch,
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stories);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Stories);
