@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -18,7 +19,7 @@ app.use(bodyParser.json());
 // DB Config
 const dbURI = require('../config/keys').mongoURI;
 
-const dbHost = process.env.DATABASE_HOST || 'localhost';
+const dbHost = process.env.DB_HOST || 'localhost';
 const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
 
@@ -37,6 +38,10 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 app.use('/api/stories', stories);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist'));
+});
 
 app.listen(port, () =>
   console.log(`Server's good to go on port ${port}... and may I say... you have got it going on today!`));

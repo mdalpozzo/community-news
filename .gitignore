@@ -1,7 +1,10 @@
-node_modules
+node_modules/
 config/keys.js
 yarn.lock
 yarn-error.log
 .eslintrc
 .yarn-error.log
 npm-debug.log
+.DS_Store
+.env
+.vscode/
