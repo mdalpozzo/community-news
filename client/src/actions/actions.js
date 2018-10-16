@@ -1,10 +1,10 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:8000/';
+const API_HOST = process.env.API_HOST || 'http://localhost:8000/';
 
 function url(endpoint) {
-  return API_ENDPOINT + endpoint;
+  return API_HOST + endpoint;
 }
 
 export const receiveStories = (stories) => {
