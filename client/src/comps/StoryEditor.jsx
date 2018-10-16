@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StoryEditor(props) {
+function StoryEditor({ closeModal, title, message }) {
   return (
     <div id="StoryEditor">
       <form>

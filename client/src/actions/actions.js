@@ -48,6 +48,20 @@ export const fetchStories = (geotag = '94121') => (dispatch) => {
     });
 };
 
+export const showModal = ({ modalProps, modalType }) => (dispatch) => {
+  dispatch({
+    type: types.CREATE_STORY_SHOW,
+    modalProps,
+    modalType,
+  });
+};
+
+export const hideModal = () => (dispatch) => {
+  dispatch({
+    type: types.CREATE_STORY_HIDE,
+  });
+};
+
 export const publishStory = storyData => (dispatch) => {
   axios
     .post(url('api/stories/publish'), storyData)

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import storiesReducer from './storiesReducer';
+import modalReducer from './modalReducer';
 import { RECEIVE_STORIES, ADD_STORIES } from '../actions/actionTypes';
 
 export const initialState = {
@@ -17,6 +18,7 @@ export const initialState = {
 
 const rootReducer = combineReducers({
   stories: storiesReducer,
+  modals: modalReducer,
 });
 
 // const rootReducer = storiesReducer;
