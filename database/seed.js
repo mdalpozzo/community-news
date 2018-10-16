@@ -9,7 +9,20 @@ async function seedDB(dbcount, collection, client) {
   const cycles = Math.ceil(totalEntries / entriesPerCycle);
 
   const tags = ['shoutOut', 'complaint', 'callToAction'];
-  const cities = ['San Francisco', 'Daly City', 'Milbrae', 'Oakland', 'San Rafael', 'Richmond', 'Walnut Creek', 'Santa Rosa', 'Palo Alto', 'Union City', 'Redwood City', 'Santa Clara'];
+  const cities = [
+    'San Francisco',
+    'Daly City',
+    'Milbrae',
+    'Oakland',
+    'San Rafael',
+    'Richmond',
+    'Walnut Creek',
+    'Santa Rosa',
+    'Palo Alto',
+    'Union City',
+    'Redwood City',
+    'Santa Clara',
+  ];
   const counties = ['San Francisco', 'Marin', 'Oakland', 'Bay Area'];
 
   for (let x = 0; x < cycles; x++) {
@@ -40,15 +53,18 @@ async function seedDB(dbcount, collection, client) {
   client.close();
 }
 
-MongoClient.connect(`mongodb://${dbHost}/`, async (err, client) => {
-  if (err) {
-    throw err;
-  } else {
-    const db = client.db('communityNews');
-    const collection = db.collection('articles');
-    const databaseCount = await collection.count();
-    
-    console.log('Seeding process initiated...');
-    seedDB(databaseCount, collection, client);
-  }
-});
+MongoClient.connect(
+  `mongodb://${dbHost}/`,
+  async (err, client) => {
+    if (err) {
+      throw err;
+    } else {
+      const db = client.db('communityNews');
+      const collection = db.collection('articles');
+      const databaseCount = await collection.count();
+
+      console.log('Seeding process initiated...');
+      seedDB(databaseCount, collection, client);
+    }
+  },
+);

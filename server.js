@@ -17,18 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-const dbURI = require('./config/keys.js').mongoURI;
+// const dbURI = require('./config/keys.js').mongoURI;
 
-const dbHost = process.env.DB_HOST || 'localhost';
+const dbURL = process.env.DB_HOST || 'mongodb://localhost/communityNews';
 const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
 
 mongoose
-  .connect(`mongodb://${dbHost}/communityNews`)
+  .connect(dbURL)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, '../client/dist')));
+app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/dist')));
 
 app.get('/', (req, res) => {
   res.status(302).redirect(`/scope/hood/${userZipcode}`);
@@ -40,7 +40,7 @@ app.use('/api/posts', posts);
 app.use('/api/stories', stories);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist'));
+  res.sendFile(path.join(__dirname, './client/dist'));
 });
 
 app.listen(port, () =>
