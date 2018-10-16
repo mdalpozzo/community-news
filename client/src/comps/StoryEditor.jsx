@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StoryEditor({ closeModal, title, message }) {
+function StoryEditor({ closeModal }) {
   return (
     <div id="StoryEditor">
       <form>
@@ -13,6 +13,11 @@ function StoryEditor({ closeModal, title, message }) {
           <input id="body" name="username" type="text" />
         </label>
       </form>
+      <button type="button" className="close" aria-label="Close" onClick={closeModal}>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   );
 }
+
+export default StoryEditor;
