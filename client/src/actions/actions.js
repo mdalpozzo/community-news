@@ -1,13 +1,10 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-// require('../../../dotenv').config();
-const keys = require('../../../keys.js');
-
-// const apiHost = process.env.API_HOST || 'http://localhost:8000/';
+const apiHost = 'https://communitynews88.herokuapp.com/' || 'http://localhost:8000/';
 
 function url(endpoint) {
-  return keys.apiHost + endpoint;
+  return apiHost + endpoint;
 }
 
 export const receiveStories = (stories) => {
