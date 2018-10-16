@@ -59,8 +59,8 @@ MongoClient.connect(
     if (err) {
       throw err;
     } else {
-      const db = client.db('communityNews');
-      const collection = db.collection('articles');
+      const db = client.db('community-news');
+      const collection = db.collection('stories');
       const databaseCount = await collection.count();
 
       console.log('Seeding process initiated...');
