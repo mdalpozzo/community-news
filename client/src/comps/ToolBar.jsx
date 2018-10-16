@@ -3,6 +3,10 @@ import SearchStories from './SearchStories.jsx';
 import FilterLocation from './FilterLocation.jsx';
 
 function ToolBar(props) {
+  // const onWriteStoryClick = () => {
+    
+  // }
+
   return (
     <div id="toolbar">
       <div className="new-story">
