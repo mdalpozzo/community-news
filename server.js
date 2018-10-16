@@ -1,4 +1,4 @@
-require('./dotenv').config();
+// require('./dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -10,6 +10,8 @@ const profile = require('./routes/api/profile.js');
 const posts = require('./routes/api/posts.js');
 const stories = require('./routes/api/stories.js');
 
+const keys = require('./keys.js');
+
 const app = express();
 
 // Body parser middlware
@@ -19,19 +21,19 @@ app.use(bodyParser.json());
 // DB Config
 // const dbURI = require('./config/keys.js').mongoURI;
 
-const dbURL = process.env.DB_HOST || 'mongodb://localhost/communityNews';
-const port = process.env.PORT || 8000;
-const userZipcode = process.env.ZIPCODE || 94121;
+// const dbURL = process.env.DB_HOST || 'mongodb://localhost/communityNews';
+// const port = process.env.PORT || 8000;
+// const userZipcode = process.env.ZIPCODE || 94121;
 
 mongoose
-  .connect(dbURL)
+  .connect(keys.dbURL)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
 app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/dist')));
 
 app.get('/', (req, res) => {
-  res.status(302).redirect(`/scope/hood/${userZipcode}`);
+  res.status(302).redirect(`/scope/hood/${keys.userZipcode}`);
 });
 
 app.use('/api/users', users);
@@ -43,5 +45,5 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/dist'));
 });
 
-app.listen(port, () =>
-  console.log(`Server's good to go on port ${port}... and may I say... you have got it going on today!`));
+app.listen(keys.port, () =>
+  console.log(`Server's good to go on port ${keys.port}... and may I say... you have got it going on today!`));

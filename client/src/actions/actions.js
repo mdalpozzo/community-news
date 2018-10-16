@@ -1,12 +1,13 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-require('../../../dotenv').config();
+// require('../../../dotenv').config();
+const keys = require('../../../keys.js');
 
-const apiHost = process.env.API_HOST || 'http://localhost:8000/';
+// const apiHost = process.env.API_HOST || 'http://localhost:8000/';
 
 function url(endpoint) {
-  return apiHost + endpoint;
+  return keys.apiHost + endpoint;
 }
 
 export const receiveStories = (stories) => {
