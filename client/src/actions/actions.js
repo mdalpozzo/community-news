@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-require('dotenv').config();
+require('../../../dotenv').config();
 
 const apiHost = process.env.API_HOST || 'http://localhost:8000/';
 
