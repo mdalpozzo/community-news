@@ -2,13 +2,13 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const DB = require('../database/mongo.js');
+const DB = require('./database/mongo.js');
 const bodyParser = require('body-parser');
 
-const users = require('../routes/api/users');
-const profile = require('../routes/api/profile');
-const posts = require('../routes/api/posts');
-const stories = require('../routes/api/stories');
+const users = require('./routes/api/users.js');
+const profile = require('./routes/api/profile.js');
+const posts = require('./routes/api/posts.js');
+const stories = require('./routes/api/stories.js');
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-const dbURI = require('../config/keys').mongoURI;
+const dbURI = require('./config/keys.js').mongoURI;
 
 const dbHost = process.env.DB_HOST || 'localhost';
 const port = process.env.PORT || 8000;
