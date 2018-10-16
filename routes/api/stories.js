@@ -15,6 +15,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Stories Works' }));
 // @desc    Fetches stories
 // @access  Public
 router.get('/zipcode', async (req, res) => {
+  console.log('STORIES ROUTES ABOUT TO ABOUT TO CALL TO MLAB');
   let { ID } = req.query;
   ID = Number(ID);
   Story.find({ zipcode: ID }, null, { sort: { upvotes: -1 } }, (err, stories) => {
