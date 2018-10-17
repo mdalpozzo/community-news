@@ -11,7 +11,7 @@
     "build": "webpack",
     "build-dev": "webpack --watch",
     "seed": "node database/seed.js",
-    "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && npm run build"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "proxy": "http://localhost:8000",
   "engines": {
