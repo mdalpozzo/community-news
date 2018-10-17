@@ -14,7 +14,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 
 // @route   GET api/users/register
 // @desc    Register user
-// @access  Private
+// @access  Public
 router.post('/register', (req, res) => {
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
