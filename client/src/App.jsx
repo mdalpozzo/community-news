@@ -26,7 +26,7 @@ class App extends React.Component {
           <ToolBar />
           <Stories />
           <div id="placeholder">Top Stories in Bay Area</div>
-          <TopStoriesBar />
+          {/* <TopStoriesBar /> */}
         </div>
       </div>
     );
