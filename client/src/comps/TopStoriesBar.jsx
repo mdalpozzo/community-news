@@ -19,7 +19,7 @@ class TopStoriesBar extends React.Component {
   render() {
     return (
       <div id="top-stories">
-        <h1>{this.props.geoScope} News</h1>
+        <h1>More Stories</h1>
         {this.props.filterBy.topStories.items.map(story => (
           <TopStoryEntry story={story} key={story._id} />
         ))}

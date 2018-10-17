@@ -25,7 +25,6 @@ class App extends React.Component {
         <div id="main-body">
           <ToolBar />
           <Stories />
-          <div id="placeholder">Top Stories in Bay Area</div>
           <TopStoriesBar />
         </div>
       </div>
