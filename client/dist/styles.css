@@ -1,3 +1,7 @@
+body {
+  margin: none;
+}
+
 #nav-bar {
   height: 10%;
   display: flex;
@@ -51,12 +55,13 @@ input[type='text'] {
   font-size: 14px;
   border: none;
   letter-spacing: 0.3px;
-  color: #656666;
+  color: #ffffff;
   font-weight: 200;
   width: 275px;
   overflow-wrap: normal;
   display: inline-block;
   vertical-align: middle;
+  background-color: #111111aa;
 }
 
 .search button {
