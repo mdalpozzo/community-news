@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 const dbURL = process.env.DB_HOST || 'mongodb://localhost/communityNews';
 const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
-const apiHost = process.env.apiHost || 'http://localhost:8000/';
+const apiHost = process.env.API_HOST || 'http://localhost:8000/';
 
 // Connect to MongoDB
 mongoose
