@@ -28,11 +28,5 @@ const store = createStore(
 );
 /* eslint-enable */
 
-// console.log(store.getState());
-
-// store.dispatch({
-//   type: 'CLICK',
-// });
-
 window.store = store;
 export default store;
