@@ -1,7 +1,10 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-const apiHost = 'https://communitynews88.herokuapp.com/' || 'http://localhost:8000/';
+// DEVELOPMENT
+const apiHost = 'http://localhost:8000/';
+// PRODUCTION WITH HEROKU
+// const apiHost = 'https://communitynews88.herokuapp.com/';
 
 function url(endpoint) {
   return apiHost + endpoint;
