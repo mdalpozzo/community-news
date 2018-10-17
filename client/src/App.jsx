@@ -9,12 +9,12 @@ import axios from 'axios';
 import NavBar from './comps/NavBar.jsx';
 import Stories from './comps/Stories.jsx';
 import ToolBar from './comps/ToolBar.jsx';
+import TopStoriesBar from './comps/TopStoriesBar.jsx';
 import * as actions from './actions/actions';
 import store from './store/store';
 
 class App extends React.Component {
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
   render() {
     return (
@@ -26,21 +26,27 @@ class App extends React.Component {
           <ToolBar />
           <Stories />
           <div id="placeholder">Top Stories in Bay Area</div>
+          <TopStoriesBar />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => (state.stories);
+const mapStateToProps = state => state.stories;
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    fetchStories: actions.fetchStories,
-  }, dispatch);
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      fetchStories: actions.fetchStories,
+    },
+    dispatch,
+  );
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
 
 ReactDOM.render(
   <Provider store={store}>

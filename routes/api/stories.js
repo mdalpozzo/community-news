@@ -19,7 +19,7 @@ router.get('/zipcode', async (req, res) => {
   let { ID } = req.query;
   ID = Number(ID);
   Story.find({ zipcode: ID }, null, { sort: { upvotes: -1 } }, (err, stories) => {
-    console.log('STORIES RETREIVED:', stories);
+    console.log('STORIES RETREIVED:');
     res.send(stories);
   });
 });

@@ -1,5 +1,5 @@
 #nav-bar {
-  height: 75px;
+  height: 10%;
   display: flex;
   width: 100%;
 }
@@ -8,7 +8,7 @@
   font-size: 30px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  margin: 25px 25px 0 25px
+  margin: 25px 25px 0 25px;
 }
 
 #nav-buttons {
@@ -38,10 +38,13 @@
 
 .search form {
   height: 100%;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
 }
 
-input[type=text] {
-  height: 100%;
+input[type='text'] {
+  height: 50%;
   padding: 0 10px 0 10px;
   font-size: 14px;
   border: none;
@@ -50,6 +53,8 @@ input[type=text] {
   font-weight: 200;
   width: 275px;
   overflow-wrap: normal;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .search button {
@@ -59,7 +64,9 @@ input[type=text] {
   border: none;
   color: grey;
   width: 50px;
-  height: 50px;
+  height: 50%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #main-body {
@@ -200,4 +207,57 @@ input[type=text] {
   height: 25px;
   width: 25px;
   margin-right: 0;
+}
+
+#top-stories {
+  width: 30%;
+  max-width: 200px;
+  min-width: 150px;
+}
+
+.top-story-entry {
+  height: 150px;
+  min-height: 100px;
+  display: flex;
+  position: relative;
+}
+
+.top-story-entry img {
+  position: absolute;
+  max-width: 95%;
+  max-height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-story-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.top-story-author {
+  text-align: center;
+  font-size: 14;
+  color: #656666;
+}
+
+.top-story-teaser {
+  position: absolute;
+  overflow: hidden;
+  width: 90%;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-story-entry:hover {
+  color: white;
+  background-color: #656666aa;
+  opacity: 0.5;
 }
