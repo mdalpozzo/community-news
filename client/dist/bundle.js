@@ -1152,7 +1152,7 @@ eval("module.exports = function(module) {\r\n\tif (!module.webpackPolyfill) {\r\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/mdalpozzo/Desktop/community-news/client/src/App.jsx */\"./client/src/App.jsx\");\n\n\n//# sourceURL=webpack:///multi_./client/src/App.jsx?");
+eval("module.exports = __webpack_require__(/*! C:\\Users\\marli\\Desktop\\code\\community-news\\client\\src/App.jsx */\"./client/src/App.jsx\");\n\n\n//# sourceURL=webpack:///multi_./client/src/App.jsx?");
 
 /***/ })
 

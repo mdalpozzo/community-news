@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const DB = require('./database/mongo.js');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const users = require('./routes/api/users.js');
 const profile = require('./routes/api/profile.js');
