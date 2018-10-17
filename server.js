@@ -24,11 +24,19 @@ const port = process.env.PORT || 8000;
 const userZipcode = process.env.ZIPCODE || 94121;
 const apiHost = process.env.apiHost || 'http://localhost:8000/';
 
+// Connect to MongoDB
 mongoose
   .connect(dbURL)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport Config
+require('./config/passport')(passport);
+
+// serve static files
 app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/dist')));
 
 app.get('/', (req, res) => {
