@@ -40,6 +40,7 @@ mongoose
 app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/dist')));
 
 app.get('/', (req, res) => {
+  console.log('hello');
   res.status(302).redirect(`/scope/hood/${userZipcode}`);
 });
 
