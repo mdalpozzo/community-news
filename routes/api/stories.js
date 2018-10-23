@@ -1,10 +1,15 @@
 const express = require('express');
 const { ObjectId } = require('mongodb');
+const mongoose = require('mongoose');
+const passport = require('passport');
 
 const router = express.Router();
 
 // Load Story model
 const Story = require('../../models/Story');
+
+// Validation
+const validateStoryInput = require('../../validation/story');
 
 // @route   GET api/stories/test
 // @desc    Tests stories route
@@ -27,9 +32,17 @@ router.get('/zipcode', async (req, res) => {
 // @route   POST api/stories/publish
 // @desc    Publish story
 // @access  Public
-router.post('/publish', (req, res) => {
+router.post('/publish', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const { errors, isValid } = validateStoryInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    // If any errors, send 400 with errors object
+    return res.status(400).json(errors);
+  }
   const newStory = new Story({
     id: req.body.id,
+    user: req.body.id,
     photo_url: req.body.photo_url,
     author: req.body.author,
     title: req.body.title,

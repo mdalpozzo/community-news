@@ -8,6 +8,10 @@ const StorySchema = new Schema({
     type: String,
     required: true,
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
   photo_url: {
     type: String,
     required: true,
@@ -40,6 +44,36 @@ const StorySchema = new Schema({
     type: String,
     required: true,
   },
+  vote: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+      },
+      test: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+      },
+      avatar: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   upvotes: {
     type: Number,
     required: true,
@@ -50,6 +84,10 @@ const StorySchema = new Schema({
   },
   tag: {
     type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 
