@@ -8,5 +8,5 @@ npm-debug.log
 .env
 .vscode/
 seedmlab.js
-client/dist/bundle.js
+client/public/bundle.js
 package-lock.json
