@@ -37,7 +37,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // serve static files
-app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/dist')));
+app.use('/scope/hood/:zipcode', express.static(path.join(__dirname, './client/public')));
 
 app.get('/', (req, res) => {
   res.status(302).redirect(`/scope/hood/${userZipcode}`);
