@@ -6,7 +6,6 @@ const { Schema } = mongoose;
 const StorySchema = new Schema({
   id: {
     type: String,
-    required: true,
   },
   user: {
     type: Schema.Types.ObjectId,
@@ -14,15 +13,12 @@ const StorySchema = new Schema({
   },
   photo_url: {
     type: String,
-    required: true,
   },
   author: {
     type: String,
-    required: true,
   },
   title: {
     type: String,
-    required: true,
   },
   text: {
     type: String,
@@ -30,19 +26,15 @@ const StorySchema = new Schema({
   },
   zipcode: {
     type: Number,
-    required: true,
   },
   city: {
     type: String,
-    required: true,
   },
   county: {
     type: String,
-    required: true,
   },
   state: {
     type: String,
-    required: true,
   },
   vote: [
     {
@@ -58,7 +50,7 @@ const StorySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
       },
-      test: {
+      text: {
         type: String,
         required: true,
       },
@@ -76,11 +68,9 @@ const StorySchema = new Schema({
   ],
   upvotes: {
     type: Number,
-    required: true,
   },
   nominations: {
     type: Number,
-    required: true,
   },
   tag: {
     type: String,
