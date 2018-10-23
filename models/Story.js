@@ -36,7 +36,7 @@ const StorySchema = new Schema({
   state: {
     type: String,
   },
-  vote: [
+  votes: [
     {
       user: {
         type: Schema.Types.ObjectId,
