@@ -10,6 +10,9 @@ import NavBar from './comps/NavBar.jsx';
 import Stories from './comps/Stories.jsx';
 import ToolBar from './comps/ToolBar.jsx';
 import TopStoriesBar from './comps/TopStoriesBar.jsx';
+import Footer from './comps/Footer.jsx';
+import Landing from './comps/Landing.jsx';
+
 import * as actions from './actions/actions';
 import store from './store/store';
 
@@ -19,14 +22,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <NavBar />
-        </div>
-        <div id="main-body">
-          <ToolBar />
-          <Stories />
-          <TopStoriesBar />
-        </div>
+        <NavBar />
+        <Landing />
+        {/* <ToolBar />
+        <Stories />
+        <TopStoriesBar /> */}
+        <Footer />
       </div>
     );
   }
