@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import authReducer from './authReducer';
 import storiesReducer from './storiesReducer';
 import modalReducer from './modalReducer';
 import { RECEIVE_STORIES, ADD_STORIES } from '../actions/actionTypes';
@@ -17,6 +18,7 @@ export const initialState = {
 };
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   stories: storiesReducer,
   modals: modalReducer,
 });
