@@ -7,13 +7,13 @@ import { fetchStories, updateVote } from '../actions/actions';
 
 class Stories extends React.Component {
   componentWillMount() {
-    this.props.fetchStories();
+    // this.props.fetchStories();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.didInvalidate === true) {
-      this.props.fetchStories();
-    }
+    // if (nextProps.didInvalidate === true) {
+    //   this.props.fetchStories();
+    // }
   }
 
   render() {
