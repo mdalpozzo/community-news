@@ -1,26 +1,28 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
+import errorReducer from './errorReducer';
 import storiesReducer from './storiesReducer';
 import modalReducer from './modalReducer';
 import { RECEIVE_STORIES, ADD_STORIES } from '../actions/actionTypes';
 
-export const initialState = {
-  isFetching: false,
-  didInvalidate: false,
-  stories: [],
-  currentPageStories: [],
-  filterBy: {
-    topStories: {
-      items: [],
-    },
-  },
-  geoScope: null,
-};
+// export const initialState = {
+//   isFetching: false,
+//   didInvalidate: false,
+//   stories: [],
+//   currentPageStories: [],
+//   filterBy: {
+//     topStories: {
+//       items: [],
+//     },
+//   },
+//   geoScope: null,
+// };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   stories: storiesReducer,
   modals: modalReducer,
+  errors: errorReducer,
 });
 
 // const rootReducer = storiesReducer;

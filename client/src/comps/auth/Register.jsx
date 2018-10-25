@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import registerUser from '../../actions/authActions';
-import axios from 'axios';
 
 class Register extends Component {
   constructor() {
@@ -16,6 +15,12 @@ class Register extends Component {
       password2: '',
       errors: {},
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange = (e) => {
@@ -33,21 +38,13 @@ class Register extends Component {
     };
 
     this.props.registerUser(newUser);
-
-    //   axios
-    //     .post('/api/users/register', newUser)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
     const { errors } = this.state;
 
-    const { user } = this.props.auth;
-
     return (
       <div className="register">
-        {user ? user.name : null}
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -121,11 +118,20 @@ class Register extends Component {
 
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      password2: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  // errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
+  errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch =>
