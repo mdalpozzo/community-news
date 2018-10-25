@@ -9,7 +9,7 @@ import $ from 'jquery';
 import axios from 'axios';
 
 import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser } from './actions/authActions';
+import { setCurrentUser, logoutUser } from './actions/authActions';
 
 import NavBar from './comps/NavBar.jsx';
 import Stories from './comps/Stories.jsx';
@@ -31,6 +31,17 @@ if (localStorage.jwtToken) {
   const decoded = jwt_decode(localStorage.jwtToken);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+
+  // Check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+    // TODO: Clear current profile
+
+    // Redirect to login
+    window.location.href = '/login';
+  }
 }
 
 class App extends React.Component {

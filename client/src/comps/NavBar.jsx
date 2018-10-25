@@ -92,12 +92,7 @@ class NavBar extends Component {
 NavBar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.shape({
-    user: PropTypes.shape({
-      email: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      password: PropTypes.string.isRequired,
-      password2: PropTypes.string.isRequired,
-    }),
+    user: PropTypes.shape({}),
   }).isRequired,
   // errors: PropTypes.object.isRequired,
 };
