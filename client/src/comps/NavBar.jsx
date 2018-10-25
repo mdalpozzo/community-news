@@ -1,8 +1,49 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/authActions';
 
 class NavBar extends Component {
+  onLogoutClick = (e) => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <a href="#" onClick={this.onLogoutClick} className="nav-link">
+            <img
+              className="rounded-circle"
+              src={user.avatar}
+              alt={user.name}
+              style={{ width: '25px', marginRight: '5px' }}
+            />
+            Logout
+          </a>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <Link className="nav-link" to="/register">
+            Top Stories
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/login">
+            Login
+          </Link>
+        </li>
+      </ul>
+    );
+
     return (
       // <div id="nav-bar">
       //   <img src="images/community-news-logo.png" alt="community-news-logo" />
@@ -41,23 +82,31 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  Top Stories
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {isAuthenticated ? authLinks : guestLinks}
+        </div>
       </nav>
     );
   }
 }
 
-export default NavBar;
+NavBar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({
+      email: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      password2: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+  // errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser },
+)(NavBar);

@@ -4,8 +4,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import jwt_decode from 'jwt-decode';
 import $ from 'jquery';
 import axios from 'axios';
+
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser } from './actions/authActions';
 
 import NavBar from './comps/NavBar.jsx';
 import Stories from './comps/Stories.jsx';
@@ -18,6 +22,16 @@ import Login from './comps/auth/Login.jsx';
 
 import * as actions from './actions/actions';
 import store from './store/store';
+
+// Check for token
+if (localStorage.jwtToken) {
+  // Set auth token header auth
+  setAuthToken(localStorage.jwtToken);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(localStorage.jwtToken);
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+}
 
 class App extends React.Component {
   componentWillMount() {}
