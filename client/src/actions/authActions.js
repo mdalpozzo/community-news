@@ -2,10 +2,10 @@ import * as types from './actionTypes';
 import axios from 'axios';
 
 // Register User
-const registeruser = userData => (dispatch) => {
+const registeruser = (userData, history) => (dispatch) => {
   axios
     .post('/api/users/register', userData)
-    .then(res => console.log(res.data))
+    .then(res => history.push('/login'))
     .catch(err =>
       dispatch({
         type: types.GET_ERRORS,
