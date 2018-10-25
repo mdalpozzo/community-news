@@ -26,6 +26,10 @@ class Landing extends Component {
                 <Link to="/login" className="btn btn-lg btn-light">
                   Login
                 </Link>
+                <hr />
+                <Link to="/stories" className="btn btn-lg btn-light">
+                  See Stories
+                </Link>
               </div>
             </div>
           </div>

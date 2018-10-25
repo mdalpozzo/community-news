@@ -19,6 +19,7 @@ import Footer from './comps/Footer.jsx';
 import Landing from './comps/Landing.jsx';
 import Register from './comps/auth/Register.jsx';
 import Login from './comps/auth/Login.jsx';
+import Dashboard from './comps/Dashboard.jsx';
 
 import * as actions from './actions/actions';
 import store from './store/store';
@@ -52,11 +53,12 @@ class App extends React.Component {
       <Router>
         <div>
           <NavBar />
-          {/* <Route path="/" component={Landing} /> */}
           <Route exact path="/" component={Landing} />
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/stories" component={Stories} />
           </div>
           <Footer />
         </div>
