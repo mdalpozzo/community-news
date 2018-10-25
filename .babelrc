@@ -1,8 +1,5 @@
 {
-  "presets": [
-    "react",
-    "env"
-  ],
+  "presets": ["react", "env", "stage-0"],
   "plugins": ["transform-react-jsx"],
   "env": {
     "test": {
