@@ -3,6 +3,7 @@ import authReducer from './authReducer';
 import errorReducer from './errorReducer';
 import storiesReducer from './storiesReducer';
 import modalReducer from './modalReducer';
+import profileReducer from './profileReducer';
 import { RECEIVE_STORIES, ADD_STORIES } from '../actions/actionTypes';
 
 // export const initialState = {
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   stories: storiesReducer,
   modals: modalReducer,
   errors: errorReducer,
+  profile: profileReducer,
 });
 
 // const rootReducer = storiesReducer;
