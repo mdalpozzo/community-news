@@ -38,6 +38,9 @@ require('./config/passport')(passport);
 
 // serve static files
 app.use('/', express.static(path.join(__dirname, './client/public')));
+app.get('/', (req, res) => {
+  res.send('HELLO');
+});
 
 // app.get('/', (req, res) => {
 //   res.status(302).redirect(`/scope/hood/${userZipcode}`);
