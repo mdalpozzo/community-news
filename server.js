@@ -37,7 +37,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // serve static files
-app.use('/', express.static(path.join(__dirname, './client/public')));
+// app.use('/', express.static(path.join(__dirname, './client/public')));
 // app.get('/', (req, res) => {
 //   res.send('HELLO');
 // });
@@ -51,13 +51,30 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 app.use('/api/stories', stories);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/public/index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err);
-    }
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set Static folder
+  app.use(express.static('./client/public'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/public/index.html'), (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
   });
-});
+} else {
+  // serve static files
+  app.use('/', express.static(path.join(__dirname, './client/public')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './client/public/index.html'), (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+  });
+}
 
 app.listen(port, () =>
   console.log(`Server's good to go on port ${port}... and may I say... you have got it going on today!`));
