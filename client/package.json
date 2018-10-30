@@ -5,7 +5,9 @@
   "repository": "https://github.com/mdalpozzo/community-news.git",
   "author": "Marlin Dalpozzo",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack"
+  },
   "proxy": "http://localhost:8000",
   "engines": {
     "node": "10.4.0"
