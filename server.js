@@ -17,9 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
-// const dbURI = require('./config/keys.js').mongoURI;
+const dbURI = require('./config/keys.js').mongoURI;
 
-const dbURL = process.env.DB_HOST || 'mongodb://localhost/communityNews';
+const dbURL = process.env.DB_HOST || dbURI;
 const port = process.env.PORT || 8000;
 // const userZipcode = process.env.ZIPCODE || 94121;
 // const apiHost = process.env.API_HOST || 'http://localhost:8000/';
@@ -38,9 +38,9 @@ require('./config/passport')(passport);
 
 // serve static files
 app.use('/', express.static(path.join(__dirname, './client/public')));
-app.get('/', (req, res) => {
-  res.send('HELLO');
-});
+// app.get('/', (req, res) => {
+//   res.send('HELLO');
+// });
 
 // app.get('/', (req, res) => {
 //   res.status(302).redirect(`/scope/hood/${userZipcode}`);
