@@ -25,14 +25,8 @@ export const fetchStories = (geotag = '94121') => (dispatch) => {
     type: types.FETCH_STORIES_REQUEST,
   });
 
-  let endpoint = '';
-
-  if (geotag.length === 5 && /^\d+$/.test(geotag)) {
-    endpoint = 'api/stories/zipcode';
-  }
-
   axios
-    .get(url(endpoint), {
+    .get('api/stories', {
       params: {
         ID: geotag,
       },

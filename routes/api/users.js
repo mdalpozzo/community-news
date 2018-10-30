@@ -2,7 +2,7 @@ const express = require('express');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-// const keys = require('../../config/keys');
+const keys = require('../../config/keys');
 const passport = require('passport');
 
 const router = express.Router();
@@ -91,7 +91,7 @@ router.post('/login', (req, res) => {
         const payload = { id: user.id, name: user.name, avatar: user.avatar }; // create JWT Payload
 
         // Sign Token
-        jwt.sign(payload, 'secret', { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, keys.secretKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
             token: `Bearer ${token}`,
