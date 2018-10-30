@@ -33,22 +33,15 @@ function StoryEntry(props) {
   };
 
   return (
-    <div className="story-entry" data-id={props.story._id}>
-      <img src={props.story.photo_url} alt="user post" />
-      <div className="story-teaser">
-        <span className="story-title">{props.story.title}</span>
-        <span className="story-author">by {props.story.author}</span>
-        <span className="story-intro">{props.story.text}</span>
-        <div className="ratings">
-          <div className="upvotes" onClick={onVoteClick}>
-            <img src="rock-on.png" alt="upvotes" />
-            <span>{props.story.upvotes}</span>
-          </div>
-          <div className="nominations" onClick={onNominationClick}>
-            <img src="nominate.png" alt="nominations" />
-            <span>{props.story.nominations}</span>
-          </div>
+    <div className="row">
+      <div className="col-8">
+        <div className="media" data-id={props.story._id}>
+          <img className="mr-3" src={props.story.photo_url} alt="user post" />
         </div>
+      </div>
+      <div className="col-4">
+        <h5>{props.story.author}</h5>
+        <p className="text-truncate">{props.story.text}</p>
       </div>
     </div>
   );
