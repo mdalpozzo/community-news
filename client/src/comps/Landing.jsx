@@ -40,21 +40,21 @@ class Landing extends Component {
           </div>
           <div className="container-fluid">
             <div className="row align-items-center">
-              <div className="col-sm text-center dark-overlay">
+              <div className="col-sm text-center light-overlay">
                 <StoryEntry story={this.props.stories.filterBy.topStories.items[0]} />
               </div>
               <div className="col-sm">
                 <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">B</div>
+                  <div className="col-lg text-center light-overlay">B</div>
                 </div>
                 <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">C</div>
+                  <div className="col-lg text-center light-overlay">C</div>
                 </div>
                 <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">D</div>
+                  <div className="col-lg text-center light-overlay">D</div>
                 </div>
               </div>
-              <div className="col-sm text-center dark-overlay">E</div>
+              <div className="col-sm text-center light-overlay">E</div>
             </div>
           </div>
         </div>

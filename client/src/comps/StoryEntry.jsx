@@ -41,7 +41,7 @@ function StoryEntry(props) {
       </div>
       <div className="col-4">
         <h5>{props.story.author}</h5>
-        <p className="text-truncate">{props.story.text}</p>
+        {/* <p className="text-truncate">{props.story.text}</p> */}
       </div>
     </div>
   );
