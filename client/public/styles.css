@@ -1,15 +1,17 @@
-img {
-  width: 100%;
+body,
+html {
+  height: 100%;
 }
 
 .landing {
   position: relative;
-  background: url('./images/neighborhood.jpeg') no-repeat;
-  background-size: cover;
-  background-position: center;
   height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+}
+
+.landing-background {
+  position: fixed;
+  height: 100%;
+  z-index: -1;
 }
 
 .landing-inner {
@@ -20,6 +22,29 @@ img {
   margin: 0;
 }
 
+.register {
+  position: relative;
+  top: 85px;
+}
+
+.login {
+  position: relative;
+  top: 85px;
+}
+
+.separator {
+  border-color: #000 transparent #5e5e5e transparent;
+  border-width: 2px;
+  border-style: solid;
+  height: 0;
+  width: 75%;
+}
+
+.headline {
+  height: 10rem;
+  padding-top: 5rem;
+}
+
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
@@ -27,6 +52,11 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+footer {
+  height: 60px;
+  flex: 2;
 }
 
 .card-form {
@@ -44,4 +74,106 @@ img {
 
 .story-intro {
   display: block;
+}
+
+.main-stories-container {
+  display: flex;
+}
+
+.main-stories-1 {
+  display: inline-block;
+  width: 40rem;
+  padding: 2rem;
+  height: 40rem;
+}
+
+.main-stories-1 .text {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.secondary-stories {
+  display: inline-block;
+  height: 40rem;
+  padding: 2rem;
+}
+
+.main-stories-small {
+  width: 30rem;
+  height: 33%;
+}
+
+.secondary-stories .story-entry {
+  height: 15rem;
+  width: 17rem;
+}
+
+.small-story-entry {
+  display: flex;
+  height: 100%;
+  padding: 1rem;
+}
+
+.secondary-stories img {
+  height: 85%;
+}
+
+.secondary-stories .text {
+  display: inline-block;
+  width: 50%;
+}
+
+.secondary-stories h4 {
+  font-size: 1rem;
+}
+
+.secondary-stories h5 {
+  font-size: 0.8rem;
+}
+
+.small-story-entry .photo-container {
+  width: 50%;
+}
+
+.photo-container {
+  overflow: hidden;
+}
+
+.nav-bar {
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 99;
+  background-color: #444444;
+  width: 100%;
+  height: 65px;
+  padding-top: 20px;
+  top: 0;
+  overflow: visible;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: center;
+  transition: top 0.3s;
+}
+
+.nav-bar ul {
+  float: right;
+  content: normal;
+}
+
+.nav-bar li {
+  display: inline;
+  padding: 0 5px 0 5px;
+  margin: 0 1rem 0 1rem;
+}
+
+.body-container {
+  display: flex;
+  /* min-height: 100vh; */
+  height: 100%;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
 }

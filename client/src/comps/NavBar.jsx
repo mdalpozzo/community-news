@@ -30,19 +30,19 @@ class NavBar extends Component {
     );
 
     const guestLinks = (
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/stories">
+      <ul className="">
+        {/* <li className="">
+          <Link className="" to="/stories">
             See Stories
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/register">
+        </li> */}
+        <li className="">
+          <Link className="" to="/register">
             Sign Up
           </Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">
+        <li className="">
+          <Link className="" to="/login">
             Login
           </Link>
         </li>
@@ -74,21 +74,19 @@ class NavBar extends Component {
       //   </div>
       // </div>
 
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            Community News
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          {isAuthenticated ? authLinks : guestLinks}
-        </div>
+      <nav className="nav-bar">
+        <Link className="brand-link" to="/">
+          Community News
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#mobile-nav"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        {isAuthenticated ? authLinks : guestLinks}
       </nav>
     );
   }

@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 const dbURI = require('./config/keys.js').mongoURI;
 
 const dbURL = process.env.DB_HOST || dbURI;
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 // const userZipcode = process.env.ZIPCODE || 94121;
 // const apiHost = process.env.API_HOST || 'http://localhost:8000/';
 

@@ -33,14 +33,13 @@ function StoryEntry(props) {
   };
 
   return (
-    <div className="story-entry">
+    <div className="small-story-entry">
       <div className="photo-container" data-id={props.story._id}>
         <img className="" src={props.story.photo_url} alt="user post" />
       </div>
       <div className="text">
         <h4 className="title">{props.story.title}</h4>
         <h5 className="author">{props.story.author}</h5>
-        <p className="text-truncate intro">{props.story.text}</p>
       </div>
     </div>
   );

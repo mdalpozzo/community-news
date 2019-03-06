@@ -7,6 +7,7 @@ import { fetchStories, updateVote } from '../actions/actions';
 
 class Stories extends React.Component {
   componentWillMount() {
+    console.log(this.props);
     this.props.fetchStories();
   }
 

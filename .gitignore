@@ -10,3 +10,4 @@ npm-debug.log
 seedmlab.js
 client/public/bundle.js
 package-lock.json
+bundle.js

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchStories, updateVote } from '../actions/actions';
 import StoryEntry from './StoryEntry.jsx';
+import SmallStoryEntry from './SmallStoryEntry.jsx';
 
 class Landing extends Component {
   componentWillMount() {
@@ -28,35 +29,39 @@ class Landing extends Component {
 
     return (
       <div className="landing">
+        <img
+          className="landing-background"
+          src="images/neighborhood.jpeg"
+          alt="neighborhood houses"
+        />
         <div className="dark-overlay landing-inner text-light">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 text-center">
-                <h1 className="display-3">Community News</h1>
-                <p className="lead"> Stories from your neighborhood </p>
-                <hr />
+          <div className="headline col-md-12 text-center">
+            <h1 className="display-3">Community News</h1>
+            <p className="lead"> Stories from your neighborhood </p>
+          </div>
+          <br />
+          <hr className="separator" />
+          <div className="main-stories-container">
+            <div className="main-stories-1">
+              <StoryEntry story={this.props.stories.filterBy.topStories.items[0]} />
+            </div>
+            <div className="secondary-stories">
+              <div className="main-stories-small">
+                <SmallStoryEntry story={this.props.stories.filterBy.topStories.items[1]} />
+              </div>
+              <div className="main-stories-small">
+                <SmallStoryEntry story={this.props.stories.filterBy.topStories.items[2]} />
+              </div>
+              <div className="main-stories-small">
+                <SmallStoryEntry story={this.props.stories.filterBy.topStories.items[3]} />
               </div>
             </div>
           </div>
-          <div className="container-fluid">
-            <div className="row align-items-center">
-              <div className="col-sm text-center dark-overlay">
-                <StoryEntry story={this.props.stories.filterBy.topStories.items[0]} />
-              </div>
-              <div className="col-sm">
-                <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">B</div>
-                </div>
-                <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">C</div>
-                </div>
-                <div className="row align-items-center">
-                  <div className="col-lg text-center dark-overlay">D</div>
-                </div>
-              </div>
-              <div className="col-sm text-center dark-overlay">E</div>
-            </div>
-          </div>
+          <br />
+          <br />
+          <hr className="separator" />
+          <br />
+          <br />
         </div>
       </div>
     );

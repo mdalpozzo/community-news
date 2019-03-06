@@ -49,12 +49,13 @@ class App extends React.Component {
   componentWillMount() {}
 
   render() {
+    console.log(this.props);
     return (
       <Router>
-        <div>
-          <NavBar />
-          <Route exact path="/" component={Landing} />
-          <div className="container">
+        <div className="body-container">
+          <div className="main">
+            <NavBar />
+            <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
